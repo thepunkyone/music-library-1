@@ -6,7 +6,9 @@
   "scripts": {
     "prestart": "node utils/create-database.js",
     "start": "nodemon -r dotenv/config index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/**/*.js --exit --recursive --timeout 60000 --file ./tests/test-setup.js",
+    "pretest": "node utils/create-database.js test",
+    "posttest": "node utils/drop-database.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,12 @@
   },
   "homepage": "https://github.com/ShabinaP/music-library#readme",
   "devDependencies": {
+    "chai": "^4.3.4",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
-    "nodemon": "^2.0.12"
+    "mocha": "^9.1.0",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
     "express": "^4.17.1",
