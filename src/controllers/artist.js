@@ -1,7 +1,9 @@
+const getDB = require('../services/db')
 
 
 
-
-exports.create = (request, response) => {
+async exports.create = (request, response) => {
+    const db = await getDB();
+    
     response.sendStatus(201)
 }
