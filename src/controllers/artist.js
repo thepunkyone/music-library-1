@@ -2,8 +2,17 @@ const getDB = require('../services/db')
 
 
 
-async exports.create = (request, response) => {
+async create (request, response) {
     const db = await getDB();
-    
-    response.sendStatus(201)
+    try {
+    await db.query (`INSERT INTO Artist (name,genre) 
+    VALUES('Tame Impala', 'rock')`)
+    response.sendStatus(201)}
+   
+    catch (err) {
+       response.sendStatus(500)
+    }
+
+
+    db.close()
 }
