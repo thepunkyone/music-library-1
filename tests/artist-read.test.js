@@ -49,3 +49,20 @@ describe('read artist', () => {
     });
   });
 });
+
+describe('/artist/:artistId', () => {
+    describe('GET', () => {
+        it('returns a single artist with the correct id', async () => {
+            const expected = artists[0];
+            const response = await request(app).get(`/artist/${expected.id}`).send();
+
+            expect(response.status).to.equal(200)
+            expect(response.body).to.deep.equal(expected)
+        });
+        it('returns a 404 if the artist is not in the database', async () => {
+            const response = await (await request(app).get('/artist/999999')).send();
+
+            expect(response.status).to.equal(404);
+        });
+    });
+});

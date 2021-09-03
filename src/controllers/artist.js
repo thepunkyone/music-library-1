@@ -33,4 +33,15 @@ exports.read = async(_, response) => {
     response.status(500).json(err)
 }
     db.close()
+};
+
+exports.read = async(_, response) => {
+    const db = await getDB();
+    try {
+        const expected = await db.query(`SELECT * FROM Artist WHERE ${expected.id}`)
+        response.status(200).json(expected)
+    }
+    catch(err) {
+        
+    }
 }
