@@ -23,16 +23,14 @@ exports.create = async (request, response) => {
 }
 
 
-exports.read = async(request, response) => {
+exports.read = async(_, response) => {
     const db = await getDB();
-    
     try {
-        await db.query(`SELECT * from Artist` , )
-    response.sendStatus(200)}
+    const [artists] =  await db.query(`SELECT * FROM Artist` )
+    response.status(200).json(artists)}
     
-catch (err) {
-    response.sendStatus(500).json(err)
-
+    catch (err) {
+    response.status(500).json(err)
 }
-db.close()
+    db.close()
 }
