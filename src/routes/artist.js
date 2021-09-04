@@ -10,6 +10,8 @@ router.get('/', artistCtrl.read);
 
 router.get('/:artistId', artistCtrl.readById);
 
+router.patch('/:artistId', artistCtrl.update);
+
 
 
 
