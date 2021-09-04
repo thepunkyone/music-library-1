@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const request = require('supertest');
-const getDb = require('../src/services/db');
+const getDB = require('../src/services/db');
 const app = require('../src/app');
 
 describe('read artist', () => {
@@ -8,7 +8,7 @@ describe('read artist', () => {
   let artists;
 
   beforeEach(async () => {
-    db = await getDb();
+    db = await getDB();
     await Promise.all([
       db.query('INSERT INTO Artist (name, genre) VALUES(?, ?)', [
         'Tame Impala',
@@ -48,21 +48,23 @@ describe('read artist', () => {
       });
     });
   });
-});
+
 
 describe('/artist/:artistId', () => {
-    describe('GET', () => {
-        it('returns a single artist with the correct id', async () => {
-            const expected = artists[0];
-            const response = await request(app).get(`/artist/${expected.id}`).send();
+  describe('GET', () => {
+    it('returns a single artist with the correct id', async () => {
+      const expected = artists[0];
+      const res = await request(app).get(`/artist/${expected.id}`).send();
 
-            expect(response.status).to.equal(200)
-            expect(response.body).to.deep.equal(expected)
-        });
-        it('returns a 404 if the artist is not in the database', async () => {
-            const response = await (await request(app).get('/artist/999999')).send();
-
-            expect(response.status).to.equal(404);
-        });
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(expected);
     });
+
+    it('returns a 404 if the artist is not in the database', async () => {
+      const res = await request(app).get('/artist/999999').send();
+
+      expect(res.status).to.equal(404);
+    });
+  });
+});
 });

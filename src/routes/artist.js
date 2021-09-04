@@ -8,7 +8,7 @@ router.post('/', artistCtrl.create);
 
 router.get('/', artistCtrl.read);
 
-router.get('/artist/:artistId', artistCtrl.read)
+router.get('/:artistId', artistCtrl.readById);
 
 
 
