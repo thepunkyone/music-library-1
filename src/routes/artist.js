@@ -12,6 +12,7 @@ router.get('/:artistId', artistCtrl.readById);
 
 router.patch('/:artistId', artistCtrl.update);
 
+router.delete('/:artistId', artistCtrl.delete);
 
 
 
