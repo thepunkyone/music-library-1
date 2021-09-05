@@ -78,10 +78,10 @@ exports.readById = async (req, res) => {
       const db = await getDB();
       const { artistId } = req.params;
 try{ 
-    const [{removeRow},] = await db.query('DELETE FROM Artist WHERE id = ?', [
+    const [{affectedRows},] = await db.query('DELETE FROM Artist WHERE id = ?', [
               artistId,
           ]);
-          if (!removeRow) {
+          if (!affectedRows) {
             res.sendStatus(404);
           } else {
             res.status(200).send();
