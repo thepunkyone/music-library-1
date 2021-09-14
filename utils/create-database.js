@@ -12,7 +12,7 @@ require('dotenv').config({
 });
 // destructure environment variables from process.env 
 // eslint-disable-next-line no-undef
-const { DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT} = process.env;
+const { DB_PASSWORD, DB_NAME, DB_USER, DB_HOST, DB_PORT,CLEAR_DATABASE_URL } = process.env;
 // This asyncronous function will run before app
 const setUpDatabase = async () => {
     try {
