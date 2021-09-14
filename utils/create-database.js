@@ -56,5 +56,5 @@ const setUpDatabase = async () => {
         console.log(err);
     }
 };
-//run the async function
+
 setUpDatabase();
