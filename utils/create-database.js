@@ -34,7 +34,9 @@ const setUpDatabase = async () => {
             id INT PRIMARY KEY auto_increment,
             name VARCHAR(25),
             year INT,
-            FOREIGN KEY (id) REFERENCES Artist(id)
+            Artistid INT,
+            FOREIGN KEY (Artistid) REFERENCES Artist(id)
+            
         )`);
         db.close()
     }
