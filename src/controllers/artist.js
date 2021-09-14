@@ -1,6 +1,5 @@
-const { response, request } = require('express');
-const getDB = require('../services/db')
 
+const getDB = require('../services/db')
 
 
 exports.create = async (request, response) => {

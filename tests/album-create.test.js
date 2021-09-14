@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const getDb = require('../src/services/db');
 const request = require('supertest');
 const app = require('../src/app');
-// const { response } = require('../src/app');
+
 
 describe('create album', () => {
     let db;
@@ -16,10 +16,7 @@ describe('create album', () => {
     ]);
    
         artistId = result.insertId
-        })
-    
-    
-    ;
+        });
 
     afterEach(async () => {
         await db.query('DELETE FROM Album');
@@ -41,7 +38,7 @@ describe('create album', () => {
                  `SELECT * FROM Album WHERE Artistid = ${artistId}`
                     
                 );
-               console.log(albumEntries)
+               
                 expect(albumEntries.name).to.equal('Better')
                 expect(albumEntries.year).to.equal(2018)
                 expect(albumEntries.Artistid).to.equal(artistId)
