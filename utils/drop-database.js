@@ -21,9 +21,7 @@ const dropDatabase = async () => {
     catch(err) {
         console.log(err)
     }
-    
 }
-
 module.exports = dropDatabase
 
 
